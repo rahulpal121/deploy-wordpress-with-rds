@@ -1,0 +1,80 @@
+-----------deploy-wordpress-with-rds-ecr-----
+-----History----
+    1  aws configure
+    2  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x3y4m9                                                                             y6
+    3  sudo aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x                                                                             3y4m9y6
+    4  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    5  unzip awscliv2.zip
+    6  sudo ./aws/install
+    7  sudo apt install unzip
+    8  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    9  unzip awscliv2.zip
+   10  sudo ./aws/install
+   11  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x3y4m9                                                                             y6
+   12  aws config
+   13  aws configure
+   14  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.e
+   15  sudo aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x                                                                             3y4m9y6
+   16  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   17  unzip awscliv2.zip
+   18  sudo apt uninstall awscli1 -y
+   19  sudo apt uninstall awscli1
+   20  awscli --version
+   21  sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+   22  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x3y4m9                                                                             y6
+   23  sudo aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x                                                                             3y4m9y6
+   24  sudo usermod -aG docker $USER && add group
+   25  sudo usermod -aG docker $USER && groupadd docker
+   26  sudo reboot
+   27  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/x3y4m9                                                                             y6
+   28  docker tag wp-project:latest public.ecr.aws/x3y4m9y6/wp-project:latest
+   29  docker ps
+   30  systemctl start docker
+   31  docker ps -a
+   32  docker run -d eloquent_lamport
+   33  docker run -d 6181aeee2589
+   34  docker ps
+   35  docker images
+   36  docker tag wordpress:latest public.ecr.aws/x3y4m9y6/wp-project:latest
+   37  docker push public.ecr.aws/x3y4m9y6/wp-project:latest
+   38  sudo apt updateCopied!
+   39  sudo apt update
+   40  sudo apt upgrade
+   41  sudo apt install mysql-server
+   42  sudo apt install mysql-client
+   43  mysql --version
+   44  mysql
+   45  mysql -u admin -p
+   46  mysql -h database-1.cjcqa95rxfbr.us-east-1.rds.amazonaws.com -p 3306 -u admin -P
+   47  mysql -h database-1.cjcqa95rxfbr.us-east-1.rds.amazonaws.com -p 3306 -u admin
+   48  mysql -h database-1.cjcqa95rxfbr.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+   49  docker ps -a
+   50  docker start 6181aeee2589
+   51  docker ps
+   52  mysql -h database-1.cjcqa95rxfbr.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+
+-----------Dockerfile-----
+FROM wordpress:latest
+
+RUN apt update && \
+    apt upgrade -y && \
+    apt autoremove && \
+    apt install -y \
+    vim \
+    wget \
+    mariadb-client
+
+COPY php.ini /usr/local/etc/php
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    php wp-cli.phar --info && \
+    chmod +x wp-cli.phar && \
+    mv wp-cli.phar /usr/local/bin/wp && \
+    rm /usr/local/etc/php/php.ini-development && \
+    rm /usr/local/etc/php/php.ini-production
+
+----create database using mysql client--
+create database wordpress;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> exit
